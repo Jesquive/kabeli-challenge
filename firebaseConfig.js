@@ -3,7 +3,7 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from 'firebase/firestore';
 
-//TODO: use env files
+//TODO: use env files, public project from firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCfd0Vf6gqIElNV2fV7YkzfVavGjJOYtZA",
   authDomain: "kabeli-challenge.firebaseapp.com",

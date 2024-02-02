@@ -5,6 +5,7 @@
   "scripts": {
     "start": "expo start",
     "start-cache": "expo start -c",
+    "start-offline": "expo start -c --offline",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
