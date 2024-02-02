@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import PressableWithOpacity from '../PressableWithOpacity/PressableWithOpacity';
+import PressableWithOpacity from './PressableWithOpacity';
 
 export default function FloatingButton({onPress}) {
   return (

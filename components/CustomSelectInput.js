@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function CustomSelectInput({ label, onChange, onBlur, value, disabled, ...otherProps }) {
+export default function CustomSelectInput({ label, onChange, onBlur, value, disabled, error, ...otherProps }) {
   return (
     <View >
         {!label ? null :
@@ -11,11 +11,12 @@ export default function CustomSelectInput({ label, onChange, onBlur, value, disa
             </Text>
         }
         <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+            onValueChange={(value) => onChange ? onChange(value) : null}
             items={[
                 { label: 'Pendiente', value: false },
                 { label: 'Terminada', value: true },
             ]}
+            value={value}
             placeholder={{}}
             style={{
                 inputAndroid: {
@@ -43,17 +44,15 @@ export default function CustomSelectInput({ label, onChange, onBlur, value, disa
                     top: 16,
                     right: 10,
                   },
-                  placeholder: {
-                    color: 'purple',
-                    fontSize: 12,
-                    fontWeight: 'bold',
-                  },
             }}
             Icon={()=><Ionicons name="chevron-down" size={16} color="white" />}
             useNativeAndroidPickerStyle={false}
             disabled={disabled}
             {...otherProps}
         />
+        <Text className="text-sm text-red-400 pb-1">
+          {error ? error : null}
+        </Text>
     </View>
   );
 }

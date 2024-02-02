@@ -11,7 +11,6 @@ export default function CustomTextInput({ label, onChange, onBlur, value, error,
         }
         <TextInput
         editable
-        maxLength={40}
         onChangeText={text => onChange ? onChange(text) : null}
         value={value}
         onBlur={onBlur}
