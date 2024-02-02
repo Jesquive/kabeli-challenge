@@ -8,7 +8,7 @@ export default function CustomButton({text ,onPress, iconName, style={}, classNa
   
   return (
       <PressableWithOpacity style={style} onPress={onPress} className={customClassName} >
-          <Text> {text} </Text>
+          <Text className="text-white"> {text} </Text>
           {!iconName ? null :  <Ionicons name="add" size={32} color="white" />  }
       </PressableWithOpacity>
   );

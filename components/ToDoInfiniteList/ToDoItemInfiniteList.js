@@ -1,15 +1,20 @@
-import { ActivityIndicator, View } from 'react-native';
-import { useToDoItems } from '../../hooks/useToDoItems';
+import { ActivityIndicator, Button, Text, View } from 'react-native';
 import ToDoItem from './ToDoItem';
 import { FlatList } from 'react-native-gesture-handler';
 import ToDoListEmpty from './ToDoListEmpty';
-import { useEffect } from 'react';
+import CustomButton from '../CustomButton';
 
-export default function ToDoItemInfiniteList({items, getMoreItems ,isLastItem, loading, refresh}) {
+export default function ToDoItemInfiniteList({items, getMoreItems ,isLastItem, loading, refresh, error}) {
   
   return (
     <View className="w-full px-4 ">
-      <FlatList
+      {error ? 
+        <View className="flex flex-col items-center justify-center mt-4 h-24 ">
+          <Text className="mb-2">Ha ocurrido un error.</Text>
+          <CustomButton onPress={refresh} text="Reintentar"/>
+        </View>
+        : 
+        <FlatList
         data={items}
         renderItem={({item})=>{
           return <View className="py-3"> 
@@ -28,6 +33,8 @@ export default function ToDoItemInfiniteList({items, getMoreItems ,isLastItem, l
           </View>}
         ListEmptyComponent={()=> loading ? null : <ToDoListEmpty/>}
       />
+      }
+
     </View>
   );
 }

@@ -1,6 +1,4 @@
 import { Text, View } from 'react-native';
-import PressableWithOpacity from '../PressableWithOpacity';
-import { useNavigation } from '@react-navigation/native';
 
 
 export default function ToDoListEmpty() {

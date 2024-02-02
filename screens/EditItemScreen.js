@@ -67,6 +67,10 @@ export default function EditItemScreen({route}) {
             onBlur={onBlur}
             onChange={onChange}
             value={value}
+            items={[
+              { label: 'Pendiente', value: false },
+              { label: 'Terminada', value: true },
+          ]}
             error={errors.Status ? 'Estado es requerido' : null}
             />
           )}

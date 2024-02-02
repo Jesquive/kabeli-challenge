@@ -5,7 +5,7 @@ import FloatingButton from '../components/FloatingButton';
 import { useToDoItems } from '../hooks/useToDoItems';
 
 export default function HomeScreen({navigation}) {
-  const {items, getMoreItems ,isLastItem, loading, refresh} = useToDoItems()
+  const {items, getMoreItems ,isLastItem, loading, refresh, hasError} = useToDoItems()
 
   const navigateToCreate = () =>{
     navigation.navigate('CreateItem', {onCreateCallback: refresh})
@@ -13,7 +13,7 @@ export default function HomeScreen({navigation}) {
   
   return (
     <SafeAreaView className="bg-gray-200 flex-1 items-center py-2 ">
-      <ToDoItemInfiniteList items={items} getMoreItems={getMoreItems} isLastItem={isLastItem} loading={loading} refresh={refresh}/>
+      <ToDoItemInfiniteList error={hasError} items={items} getMoreItems={getMoreItems} isLastItem={isLastItem} loading={loading} refresh={refresh}/>
       <FloatingButton onPress={navigateToCreate}/>
       <StatusBar style="auto" />
     </SafeAreaView >

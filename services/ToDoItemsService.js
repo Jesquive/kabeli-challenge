@@ -1,5 +1,5 @@
 import { firestore } from "../firebaseConfig";
-import { serverTimestamp , collection, getDocs, updateDoc, addDoc, doc, deleteDoc, orderBy, limit, startAfter, query } from "firebase/firestore";
+import { serverTimestamp , collection, getDocs, updateDoc, addDoc, doc, deleteDoc, orderBy, limit, startAfter, query, where } from "firebase/firestore";
 
 const ToDoItemsCollectionName = 'ToDoItems'
 const ToDoItemsCollectionRef = collection(firestore,ToDoItemsCollectionName)
@@ -15,7 +15,7 @@ export const getAllToDoItems = async () => {
 export const getToDoItemsPaginated = async (itemsPerLoad=10, startAfterDoc) => {
     let q = null
     if(startAfterDoc){
-        q = query(ToDoItemsCollectionRef, orderBy('createdAt', 'desc'), limit(itemsPerLoad), startAfter(startAfterDoc))
+        q = query(ToDoItemsCollectionRef, orderBy('createdAt', 'desc'), limit(itemsPerLoad), startAfter(startAfterDoc) )
 
     } else {
         q = query(ToDoItemsCollectionRef, orderBy('createdAt', 'desc'), limit(itemsPerLoad))

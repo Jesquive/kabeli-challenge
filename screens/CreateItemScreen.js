@@ -55,7 +55,10 @@ export default function CreateItemScreen({route}) {
           )}
           name="Title"
         />
-        <CustomSelectInput label="Estado" disabled />
+        <CustomSelectInput     items={[
+              { label: 'Pendiente', value: false },
+              { label: 'Terminada', value: true },
+          ]} value={false} label="Estado" disabled />
       </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

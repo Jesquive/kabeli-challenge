@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getToDoItemsPaginated } from '../services/ToDoItemsService';
 import { ALERT_TYPE, Toast } from 'react-native-alert-notification';
+import { useToDoItemsCache } from './useToDoItemsCache';
 
 export const useToDoItems = () => {
-    const [loading, setLoading] =  useState(true)
-    const [items, setItems] =  useState([])
     const [itemsPerLoad] = useState(12)
-    const [page, setPage] = useState(0)
-    const [hasError, setHasError] = useState(false)
-    const [startAfter, setStartAfter] = useState()
-    const [isLastItem, setIsLastItem] = useState(false)
+    const {loading:cacheLoading, data:cachedItems, lastVisible} = useToDoItemsCache({itemsPerLoad })
 
+    const [loading, setLoading] =  useState(false)
+
+    const [items, setItems] =  useState(cachedItems ? [...cachedItems] : [])
+
+    const [hasError, setHasError] = useState(false)
+    const [startAfter, setStartAfter] = useState(lastVisible)
+    const [isLastItem, setIsLastItem] = useState(false)
+    
     const getMoreItems = async () => {
         setLoading(true)
         try {
@@ -18,15 +22,15 @@ export const useToDoItems = () => {
                 const {data, lastVisible} = await getToDoItemsPaginated(itemsPerLoad, startAfter)
                 setItems([...items,...data])
                 setStartAfter(lastVisible)
-                setPage(1)
                 if(data.length < itemsPerLoad || data.length==0) {
                     setIsLastItem(true) 
                 } else {
                     setIsLastItem(false)
-                    setPage((page)=>page++)
                 }
             }
         } catch (error) {
+            console.log(error)
+
             Toast.show({
                 type: ALERT_TYPE.DANGER,
                 title: 'Error',
@@ -39,15 +43,15 @@ export const useToDoItems = () => {
 
      }
 
-     const refresh = async () => {
+    const refresh = async () => {
         setLoading(true)
         setItems([])
         setStartAfter()
-        setPage(1)
+        setIsLastItem(false)
+        setHasError(false)
         try {
             const {data, lastVisible} = await getToDoItemsPaginated(itemsPerLoad)
-            setItems([...items,...data])
-            setPage(1)
+            setItems([...data])
             setStartAfter(lastVisible)
             setHasError(false)
         } catch (error) {
@@ -62,31 +66,6 @@ export const useToDoItems = () => {
         }
      }
 
-    /* use to load items on page load
-        const getItemsOnLoad = async () => {
-        setLoading(true)
-        try {
-            const {data, lastVisible} = await getToDoItemsPaginated(itemsPerLoad)
-            setItems([...items,...data])
-            setPage(1)
-            setStartAfter(lastVisible)
-            setHasError(false)
-        } catch (error) {
-            setHasError(true)
-            Toast.show({
-                type: ALERT_TYPE.DANGER,
-                title: 'Error',
-                textBody: 'Ha ocurrido un error, intentalo de nuevo.',
-            })
-        } finally {
-            setLoading(false)
-        }
-    }
 
-    useEffect(()=>{
-        getItemsOnLoad()
-    },[])
-    */
-    
-    return {items, getMoreItems, isLastItem, loading, refresh}
+    return {items, getMoreItems, isLastItem, loading: loading || cacheLoading, refresh, hasError}
 }

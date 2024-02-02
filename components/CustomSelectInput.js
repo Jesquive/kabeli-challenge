@@ -2,7 +2,7 @@ import { View, Text } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function CustomSelectInput({ label, onChange, onBlur, value, disabled, error, ...otherProps }) {
+export default function CustomSelectInput({ label, items, onChange, onBlur, value, disabled, error, ...otherProps }) {
   return (
     <View >
         {!label ? null :
@@ -12,10 +12,7 @@ export default function CustomSelectInput({ label, onChange, onBlur, value, disa
         }
         <RNPickerSelect
             onValueChange={(value) => onChange ? onChange(value) : null}
-            items={[
-                { label: 'Pendiente', value: false },
-                { label: 'Terminada', value: true },
-            ]}
+            items={items || []}
             value={value}
             placeholder={{}}
             style={{
