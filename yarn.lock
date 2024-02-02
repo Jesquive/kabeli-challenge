@@ -2354,6 +2354,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-18.8.0.tgz#77d54794b896ca792c2d97d01fd8e0c0d09bc322"
   integrity sha512-tB8ZhIYuFoTO4kYXdh5Q+LSPIXxJ5WPrVxxIxdc+qeaF7SudIojO6w/g8tTxbFdPEos8+JWhBIFAb+o0L3RbBQ==
 
+"@react-native-picker/picker@2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.6.1.tgz#3b20ddd1385fab0487db103dc6519570f8892e6d"
+  integrity sha512-oJftvmLOj6Y6/bF4kPcK6L83yNBALGmqNYugf94BzP0FQGpHBwimVN2ygqkQ2Sn2ZU3pGUZMs0jV6+Gku2GyYg==
+
 "@react-native/assets-registry@0.73.1", "@react-native/assets-registry@~0.73.1":
   version "0.73.1"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.73.1.tgz#e2a6b73b16c183a270f338dc69c36039b3946e85"
@@ -5076,6 +5081,11 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
 lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
@@ -6223,6 +6233,11 @@ react-freeze@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-freeze/-/react-freeze-1.0.3.tgz#5e3ca90e682fed1d73a7cb50c2c7402b3e85618d"
   integrity sha512-ZnXwLQnGzrDpHBHiC56TXFXvmolPeMjTn1UOm610M4EXGzbEDR7oOIyS2ZiItgbs6eZc4oU/a0hpk8PrcKvv5g==
 
+react-hook-form@^7.50.0:
+  version "7.50.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.50.0.tgz#379802d85c7b78e0056229c53607946d34f99a36"
+  integrity sha512-AOhuzM3RdP09ZCnq+Z0yvKGHK25yiOX5phwxjV9L7U6HMla10ezkBnvQ+Pk4GTuDfsC5P2zza3k8mawFwFLVuQ==
+
 "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^18.0.0, react-is@^18.1.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
@@ -6248,6 +6263,13 @@ react-native-gesture-handler@~2.14.0:
     invariant "^2.2.4"
     lodash "^4.17.21"
     prop-types "^15.7.2"
+
+react-native-picker-select@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-picker-select/-/react-native-picker-select-9.0.1.tgz#af454433061a18b7307a725fc045c05ad494e300"
+  integrity sha512-iIhb82OSH1vqB/HoipvbuX3RCzmeaQmIASlaRbv6X8imNjzh1DH/LaKoF4+DAZJLT0iX7QG79vpwZu8wjWap3Q==
+  dependencies:
+    lodash.isequal "^4.5.0"
 
 react-native-reanimated@~3.6.2:
   version "3.6.2"

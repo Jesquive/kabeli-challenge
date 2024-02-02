@@ -1,5 +1,5 @@
 import { firestore } from "../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, addDoc } from "firebase/firestore";
 
 const ToDoItemsCollectionName = 'ToDoItems'
 const ToDoItemsCollectionRef = collection(firestore,ToDoItemsCollectionName)
@@ -10,4 +10,11 @@ export const getAllToDoItems = async () => {
         return {id: doc.id, ...doc.data()}
     })
     return mappedCollection
+}
+
+export const createToDoItem = async (itemData) => {
+    return await addDoc(ToDoItemsCollectionRef, {
+        Text: itemData.Title,
+        isCompleted: false,
+    });
 }

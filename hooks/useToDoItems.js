@@ -7,6 +7,7 @@ export const useToDoItems = () => {
     const getItemsOnLoad = async () => {
        const data = await getAllToDoItems()
        setItems(data)
+       console.log(data)
     }
 
     useEffect(()=>{

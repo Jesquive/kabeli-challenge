@@ -3,7 +3,7 @@ import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-export default function PressableWithOpacity({children, onPress, style, activeOpacity, ...otherProps}) {
+export default function PressableWithOpacity({children, onPress, style=[], activeOpacity, ...otherProps}) {
     const opacity = useSharedValue(1);
 
     const handlePressIn = () => {
